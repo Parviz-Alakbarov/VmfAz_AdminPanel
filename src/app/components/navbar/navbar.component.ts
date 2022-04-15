@@ -2,6 +2,9 @@ import { Component, OnInit, ElementRef } from '@angular/core';
 import { ROUTES } from '../sidebar/sidebar.component';
 import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/app-services/auth.service';
+import { LocalStorageService } from 'src/app/app-services/local-storage.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-navbar',
@@ -12,7 +15,14 @@ export class NavbarComponent implements OnInit {
   public focus;
   public listTitles: any[];
   public location: Location;
-  constructor(location: Location,  private element: ElementRef, private router: Router) {
+  constructor(
+    location: Location,  
+    private element: ElementRef, 
+    private router: Router, 
+    private authService:AuthService,
+    private localStorageService:LocalStorageService,
+    private toastrService:ToastrService,
+  ) {
     this.location = location;
   }
 
@@ -31,6 +41,18 @@ export class NavbarComponent implements OnInit {
         }
     }
     return 'Dashboard';
+  }
+
+  logout(){
+    this.authService.logout().subscribe(response=>{
+     this.localStorageService.remove('token')
+     this.localStorageService.remove('refreshToken')
+      this.toastrService.success("Hesabdan çıxış olundu.","Success")
+      this.router.navigateByUrl("/")
+    },errorResponse=>{
+      console.log(errorResponse);
+      this.toastrService.error("Hesabdan çıxış olunarkən xəta baş verdi","Error");
+    })
   }
 
 }
