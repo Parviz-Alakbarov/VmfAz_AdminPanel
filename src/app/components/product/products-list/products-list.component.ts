@@ -11,7 +11,6 @@ import { NgxSpinnerService } from "ngx-spinner";
 export class ProductsListComponent implements OnInit {
 
   products:ProductGetDto[];
-  productImagePath:string;
 
   constructor(
     private productService:ProductService,
@@ -33,7 +32,7 @@ export class ProductsListComponent implements OnInit {
   }
 
   getProductImagePath(imageName:string){
-    return this.productService.getProductImagePath()+imageName
+    return this.productService.getProductImagePath()+imageName;
   }
 
 }

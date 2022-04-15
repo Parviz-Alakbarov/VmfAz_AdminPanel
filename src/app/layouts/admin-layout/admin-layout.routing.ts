@@ -11,6 +11,8 @@ import { BrandsListComponent } from 'src/app/components/brand/brands-list/brands
 import { BrandAddComponent } from 'src/app/components/brand/brand-add/brand-add.component';
 import { ShopListComponent } from 'src/app/components/shop/shop-list/shop-list.component';
 import { ShopAddComponent } from 'src/app/components/shop/shop-add/shop-add.component';
+import { SlidersListComponent } from 'src/app/components/slider/sliders-list/sliders-list.component';
+import { SliderAddComponent } from 'src/app/components/slider/slider-add/slider-add.component';
 
 export const AdminLayoutRoutes: Routes = [
     { path: 'dashboard',      component: DashboardComponent },
@@ -23,4 +25,6 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'brands/add',   component: BrandAddComponent},
     { path: 'shops',       component: ShopListComponent },
     { path: 'shops/add',   component: ShopAddComponent},
+    { path: 'sliders',       component: SlidersListComponent },
+    { path: 'sliders/add',   component: SliderAddComponent},
 ];

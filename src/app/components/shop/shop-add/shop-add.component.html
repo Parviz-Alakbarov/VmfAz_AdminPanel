@@ -55,7 +55,7 @@
                         
                       </div>
                       <div class="row">
-                        <div class="col-lg-3">
+                        <div class="col-lg-6">
                           <app-text-input 
                             [formControl]='shopAdd.controls["longitude"]' 
                             [label]='"Longitude"' 
@@ -63,7 +63,7 @@
                             [type]='"text"'>
                           </app-text-input> 
                         </div>
-                        <div class="col-lg-3">
+                        <div class="col-lg-6">
                           <app-text-input 
                             [formControl]='shopAdd.controls["latitude"]' 
                             [label]='"Latitude"' 
@@ -71,10 +71,14 @@
                             [type]='"text"'>
                           </app-text-input> 
                         </div>
+                        
+                      </div>
+                      <div class="row">
+                
                         <div class="col-lg-2">
-                          <label style=" height: 100%; display: flex; justify-content: center; align-items: center; font-size: 15px;" for="Shop Phone Number 2">Shop Work Time</label>
+                          <label style=" height: 100%; display: flex; justify-content: center; align-items: center; font-size: 15px;" for="Shop Phone Number 2">Shop Open Time</label>
                         </div>
-                        <div class="col-lg-1">
+                        <div class="col-lg-2">
                           <app-text-input 
                             [formControl]='shopAdd.controls["openHour"]' 
                             [label]='"Hour"' 
@@ -82,15 +86,18 @@
                             [type]='"number"'>
                           </app-text-input> 
                         </div>
-                        <div class="col-lg-1">
+                        <div class="col-lg-2">
                           <app-text-input 
                             [formControl]='shopAdd.controls["openMinute"]' 
-                            [label]='"Minu."' 
+                            [label]='"Minute"' 
                             [class]='"form-control"' 
                             [type]='"number"'>
                           </app-text-input> 
                         </div>
-                        <div class="col-lg-1">
+                        <div class="col-lg-2">
+                          <label style=" height: 100%; display: flex; justify-content: center; align-items: center; font-size: 15px;" for="Shop Phone Number 2">Shop Close Time</label>
+                        </div>
+                        <div class="col-lg-2">
                           <app-text-input 
                             [formControl]='shopAdd.controls["closeHour"]' 
                             [label]='"Hour"' 
@@ -98,10 +105,10 @@
                             [type]='"number"'>
                           </app-text-input> 
                         </div>
-                        <div class="col-lg-1">
+                        <div class="col-lg-2">
                           <app-text-input 
                             [formControl]='shopAdd.controls["closeMinute"]' 
-                            [label]='"Minu."' 
+                            [label]='"Minute"' 
                             [class]='"form-control"' 
                             [type]='"number"'>
                           </app-text-input> 
@@ -131,7 +138,7 @@
                   </div>
                   <div class="pl-lg-4">
                     <div class="text-center">
-                      <button (click)="addShop(target)" type="button" class="btn btn-primary my-2 py-3 w-100">Create Brand</button>
+                      <button (click)="addShop(target)" type="button" class="btn btn-primary my-2 py-3 w-100">Create Shop</button>
                     </div>
                   </div>
                 </form>

@@ -23,6 +23,8 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 // Import library module
 import { NgxSpinnerModule } from "ngx-spinner";
 import { ToastrModule, ToastrService } from "ngx-toastr";
+import { SlidersListComponent } from './slider/sliders-list/sliders-list.component';
+import { SliderAddComponent } from './slider/slider-add/slider-add.component';
 @NgModule({
   imports: [
   CommonModule,
@@ -49,6 +51,8 @@ import { ToastrModule, ToastrService } from "ngx-toastr";
     BrandAddComponent,
     ShopListComponent,
     ShopAddComponent,
+    SlidersListComponent,
+    SliderAddComponent,
   ],
   exports: [
     FooterComponent,

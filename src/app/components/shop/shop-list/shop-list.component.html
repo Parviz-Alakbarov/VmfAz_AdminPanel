@@ -37,8 +37,8 @@
                   {{shop.openHour}}:{{shop.openMinute}}--{{shop.closeHour}}:{{shop.closeMinute}}
                 </td>
                 <td class="text-right">
-                  <a routerLink="edit/{{product.id}}" class="btn btn-sm btn-warning">Edit</a>
-                  <a (click)="deleteProduct(product.id)" class="btn btn-sm btn-danger">Delete</a>
+                  <a routerLink="edit/{{shop.id}}" class="btn btn-sm btn-warning">Edit</a>
+                  <a (click)="deleteProduct(shop.id)" class="btn btn-sm btn-danger">Delete</a>
                 </td>
               </tr>
             </tbody>

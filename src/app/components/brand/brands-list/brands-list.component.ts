@@ -28,4 +28,10 @@ export class BrandsListComponent implements OnInit {
       this.spinner.hide();
     })
   }
+
+  getBrandImagePath(imageName:string){
+    return this.brandService.getBrandImagePath()+imageName;
+  }
+
+
 }

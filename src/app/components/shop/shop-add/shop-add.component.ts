@@ -40,8 +40,8 @@ export class ShopAddComponent implements OnInit {
       openMinute:["",[Validators.required]],
       closeMinute:["",[Validators.required]],
       redirectUrl:["",[Validators.required,Validators.maxLength(100)]],
-      longitude:["",[Validators.required,Validators.pattern("^\d{0,9}(\.\d{0,6})?$")]],
-      latitude:["",[Validators.required,Validators.pattern("^\d{0,9}(\.\d{0,6})?$")]],
+      longitude:["",[Validators.required,Validators.pattern("^\\d{0,9}(\\.\\d{0,6})?$")]],
+      latitude:["",[Validators.required,Validators.pattern("^\\d{0,9}(\\.\\d{0,6})?$")]],
 
     })
   }

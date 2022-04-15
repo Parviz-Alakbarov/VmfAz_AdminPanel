@@ -21,6 +21,10 @@ export class BrandService {
   ) { }
 
 
+  getBrandImagePath(){
+    return this.baseUrl+"images/brands/";
+  }
+
   addBrand(brand:BrandAddDto){
     let newUrl = this.baseUrl+"api/brands/add";
     return this.httpClient.post(newUrl,brand);
