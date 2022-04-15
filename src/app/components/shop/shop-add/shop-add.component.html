@@ -1,0 +1,144 @@
+<div class="header bg-gradient-danger pb-8 pt-3 pt-md-8">
+    <div class="container-fluid">
+      <div class="header-body">
+        <!-- Card stats -->
+        <div class="row">
+          <div class="col-xl-12 order-xl-1">
+            <div class="card bg-secondary shadow">
+              <div class="card-header bg-white border-0">
+                <div class="row align-items-center">
+                  <div class="col-8">
+                    <h3 class="mb-0" #target>Brand Add</h3>
+                  </div>
+                </div>
+              </div>
+              <div class="card-body">
+                <form [formGroup]="shopAdd"
+                (ngSubmit)="addShop(target)"
+                method="post">
+                  <div class="pl-lg-4">
+                    <div class="row">
+                      <div class="col-lg-6">
+                        <app-text-input 
+                          [formControl]='shopAdd.controls["name"]' 
+                          [label]='"Shop Name"' 
+                          [class]='"form-control"' 
+                          [type]='"text"'>
+                        </app-text-input> 
+                      </div>
+                      <div class="col-lg-6">
+                        <app-text-input 
+                          [formControl]='shopAdd.controls["email"]' 
+                          [label]='"Shop Email"' 
+                          [class]='"form-control"' 
+                          [type]='"text"'>
+                        </app-text-input> 
+                      </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6">
+                          <app-text-input 
+                            [formControl]='shopAdd.controls["phoneNumber1"]' 
+                            [label]='"Shop Phone Number 1"' 
+                            [class]='"form-control"' 
+                            [type]='"text"'>
+                          </app-text-input> 
+                        </div>
+                        <div class="col-lg-6">
+                          <app-text-input 
+                            [formControl]='shopAdd.controls["phoneNumber2"]' 
+                            [label]='"Shop Phone Number 2"' 
+                            [class]='"form-control"' 
+                            [type]='"text"'>
+                          </app-text-input> 
+                        </div>
+                        
+                      </div>
+                      <div class="row">
+                        <div class="col-lg-3">
+                          <app-text-input 
+                            [formControl]='shopAdd.controls["longitude"]' 
+                            [label]='"Longitude"' 
+                            [class]='"form-control"' 
+                            [type]='"text"'>
+                          </app-text-input> 
+                        </div>
+                        <div class="col-lg-3">
+                          <app-text-input 
+                            [formControl]='shopAdd.controls["latitude"]' 
+                            [label]='"Latitude"' 
+                            [class]='"form-control"' 
+                            [type]='"text"'>
+                          </app-text-input> 
+                        </div>
+                        <div class="col-lg-2">
+                          <label style=" height: 100%; display: flex; justify-content: center; align-items: center; font-size: 15px;" for="Shop Phone Number 2">Shop Work Time</label>
+                        </div>
+                        <div class="col-lg-1">
+                          <app-text-input 
+                            [formControl]='shopAdd.controls["openHour"]' 
+                            [label]='"Hour"' 
+                            [class]='"form-control"' 
+                            [type]='"number"'>
+                          </app-text-input> 
+                        </div>
+                        <div class="col-lg-1">
+                          <app-text-input 
+                            [formControl]='shopAdd.controls["openMinute"]' 
+                            [label]='"Minu."' 
+                            [class]='"form-control"' 
+                            [type]='"number"'>
+                          </app-text-input> 
+                        </div>
+                        <div class="col-lg-1">
+                          <app-text-input 
+                            [formControl]='shopAdd.controls["closeHour"]' 
+                            [label]='"Hour"' 
+                            [class]='"form-control"' 
+                            [type]='"number"'>
+                          </app-text-input> 
+                        </div>
+                        <div class="col-lg-1">
+                          <app-text-input 
+                            [formControl]='shopAdd.controls["closeMinute"]' 
+                            [label]='"Minu."' 
+                            [class]='"form-control"' 
+                            [type]='"number"'>
+                          </app-text-input> 
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-lg-12">
+                          <app-text-input 
+                            [formControl]='shopAdd.controls["redirectUrl"]' 
+                            [label]='"Redirect Url"' 
+                            [class]='"form-control"' 
+                            [type]='"text"'>
+                          </app-text-input> 
+                        </div>
+                      </div>
+                  </div>
+                  <div class="pl-lg-4">
+                    <div class="form-group">
+                      <app-textarea-input
+                        [formControl]='shopAdd.controls["address"]' 
+                        [label]='"Shop Address"' 
+                        [placeholder]='"Shop Adreess is important"'
+                        [class]='"form-control"' 
+                      >
+                      </app-textarea-input>
+                    </div>
+                  </div>
+                  <div class="pl-lg-4">
+                    <div class="text-center">
+                      <button (click)="addShop(target)" type="button" class="btn btn-primary my-2 py-3 w-100">Create Brand</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

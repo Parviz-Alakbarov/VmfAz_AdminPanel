@@ -1,0 +1,271 @@
+<div class="header bg-gradient-danger pb-8 pt-3 pt-md-8">
+  <div class="container-fluid">
+    <div class="header-body">
+      <!-- Card stats -->
+      <div class="row">
+        <div class="col-xl-12 order-xl-1">
+          <div class="card bg-secondary shadow">
+            <div class="card-header bg-white border-0">
+              <div class="row align-items-center">
+                <div class="col-8">
+                  <h3 class="mb-0" #target>Product Add</h3>
+                </div>
+              </div>
+            </div>
+            <div class="card-body">
+              <form 
+                  [formGroup]="productAdd"
+                  (ngSubmit)="addProduct(target)"
+                  method="post">
+                <div class="pl-lg-4">
+                  <div class="row">
+                    <div class="col-lg-12">
+                      <ul *ngIf="validationErrors.length != 0" class="form_error-list">
+                        <li *ngFor="let error of validationErrors" class="form_error_item">*{{error.ErrorMessage}}</li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-lg-6">
+
+                      <app-text-input 
+                        [formControl]='productAdd.controls["name"]' 
+                        [label]='"ProductName"' 
+                        [class]='"form-control"' 
+                        [type]='"text"'>
+                      </app-text-input> 
+
+                    </div>
+                    <div class="col-lg-3">
+
+                      <app-select-input
+                        [formControl]='productAdd.controls["brandId"]' 
+                        [label]='"Brand"' 
+                        [class]='"form-control"' 
+                        [optionsValue]=brands>
+                      </app-select-input>
+
+                    </div>
+                    <div class="col-lg-3">
+
+                      <app-select-input
+                        [formControl]='productAdd.controls["genderId"]' 
+                        [label]='"Gender"' 
+                        [class]='"form-control"' 
+                        [optionsValue]=genders>
+                      </app-select-input>
+
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-lg-4">
+
+                      <app-text-input 
+                        [formControl]='productAdd.controls["salePrice"]' 
+                        [label]='"SalePrice"' 
+                        [class]='"form-control"' 
+                        [type]='"number"'>
+                      </app-text-input> 
+
+                    </div>
+                    <div class="col-lg-4">
+
+                      <app-text-input 
+                        [formControl]='productAdd.controls["costPrice"]' 
+                        [label]='"Cost Price"' 
+                        [class]='"form-control"' 
+                        [type]='"number"'>
+                      </app-text-input>
+
+                    </div>
+                    <div class="col-lg-4">
+
+                      <app-text-input 
+                        [formControl]='productAdd.controls["discountPercent"]' 
+                        [label]='"Discount Percent  "' 
+                        [class]='"form-control"' 
+                        [type]='"number"'>
+                      </app-text-input> 
+                      
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-lg-4">
+
+                      <app-select-input
+                        [formControl]='productAdd.controls["productFunctionalityId"]' 
+                        [label]='"Product Functionality"' 
+                        [class]='"form-control"' 
+                        [optionsValue]=functionalities>
+                      </app-select-input>
+
+                    </div>
+                    <div class="col-lg-3">
+
+                      <app-select-input
+                        [formControl]='productAdd.controls["productStyleId"]' 
+                        [label]='"Product Style"' 
+                        [class]='"form-control"' 
+                        [optionsValue]=styles>
+                      </app-select-input>
+
+                    </div>
+                    <div class="col-lg-3">
+
+                      <app-select-input
+                        [formControl]='productAdd.controls["productWaterResistanceId"]' 
+                        [label]='"Water Resistance"' 
+                        [class]='"form-control"' 
+                        [optionsValue]=waterResistances>
+                      </app-select-input>
+                      
+                    </div>
+                    <div class="col-lg-2">
+
+                      <app-text-input 
+                        [formControl]='productAdd.controls["warrantyLimit"]' 
+                        [label]='"Warranty"' 
+                        [class]='"form-control"' 
+                        [type]='"number"'>
+                      </app-text-input> 
+                        
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-lg-4">
+                      <app-select-input
+                        [formControl]='productAdd.controls["countryId"]' 
+                        [label]='"Country"' 
+                        [class]='"form-control"' 
+                        [optionsValue]=countries>
+                      </app-select-input> 
+                    </div>
+                    <div class="col-lg-4">
+                      <app-select-input
+                        [formControl]='productAdd.controls["productMechanismId"]' 
+                        [label]='"Mechanizm"' 
+                        [class]='"form-control"' 
+                        [optionsValue]=mechanisms>
+                      </app-select-input>
+                    </div>
+                    <div class="col-lg-4">
+                      <app-select-input
+                        [formControl]='productAdd.controls["productGlassTypeId"]' 
+                        [label]='"Glass Type"' 
+                        [class]='"form-control"' 
+                        [optionsValue]=glassTypes>
+                      </app-select-input>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-lg-3">
+                      <app-select-input
+                        [formControl]='productAdd.controls["productCaseMaterialId"]' 
+                        [label]='"Case Material"' 
+                        [class]='"form-control"' 
+                        [optionsValue]=caseMaterials>
+                      </app-select-input>
+                    </div>
+                    <div class="col-lg-3">
+                      <app-select-input
+                        [formControl]='productAdd.controls["productCaseShapeId"]' 
+                        [label]='"Case Shape"' 
+                        [class]='"form-control"' 
+                        [optionsValue]=caseShapes>
+                      </app-select-input>
+                    </div>
+                    <div class="col-lg-3">
+                      <app-select-input
+                        [formControl]='productAdd.controls["productCaseSizeId"]' 
+                        [label]='"Case Size"' 
+                        [class]='"form-control"' 
+                        [optionsValue]=caseSizes>
+                      </app-select-input>
+                    </div>
+                    <div class="col-lg-3">
+                      <app-select-input
+                        [formControl]='productAdd.controls["productBeltTypeId"]' 
+                        [label]='"Belt Type"' 
+                        [class]='"form-control"' 
+                        [optionsValue]=beltTypes>
+                      </app-select-input>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-lg-4">
+                      <app-select-input
+                        [formControl]='productAdd.controls["productBeltColorId"]' 
+                        [label]='"Belt Color"' 
+                        [class]='"form-control"' 
+                        [optionsValue]=colors>
+                      </app-select-input>
+                    </div>
+                    <div class="col-lg-4">
+                      <app-select-input
+                        [formControl]='productAdd.controls["productDialColorId"]' 
+                        [label]='"Dial Color"' 
+                        [class]='"form-control"' 
+                        [optionsValue]=colors>
+                      </app-select-input>
+                    </div>
+                    <div class="col-lg-4">
+                      <app-text-input 
+                        [formControl]='productAdd.controls["toolCount"]' 
+                        [label]='"Tool Count"' 
+                        [class]='"form-control"' 
+                        [type]='"number"'>
+                      </app-text-input> 
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-lg-4">
+                      <app-select-input
+                        [formControl]='productAdd.controls["productBeltColorId"]' 
+                        [label]='"Belt Color"' 
+                        [class]='"form-control"' 
+                        [optionsValue]=colors>
+                      </app-select-input>
+                    </div>
+                    <div class="col-lg-4">
+                      <app-select-input
+                        [formControl]='productAdd.controls["productDialColorId"]' 
+                        [label]='"Dial Color"' 
+                        [class]='"form-control"' 
+                        [optionsValue]=colors>
+                      </app-select-input>
+                    </div>
+                    <div class="col-lg-4">
+                      <app-text-input 
+                        [formControl]='productAdd.controls["toolCount"]' 
+                        [label]='"Tool Count"' 
+                        [class]='"form-control"' 
+                        [type]='"number"'>
+                      </app-text-input> 
+                    </div>
+                  </div>
+                </div>
+                <div class="pl-lg-4">
+                  <div class="form-group">
+                    <app-textarea-input
+                        [formControl]='productAdd.controls["description"]' 
+                        [label]='"Product Description"' 
+                        [placeholder]='"Product description"'
+                        [class]='"form-control"' 
+                      >
+                    </app-textarea-input>
+                  </div>
+                </div>
+                <div class="pl-lg-4">
+                  <div class="text-center">
+                    <button (click)="addProduct(target)" type="button" class="btn btn-primary my-2 py-3 w-100">Create Product</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

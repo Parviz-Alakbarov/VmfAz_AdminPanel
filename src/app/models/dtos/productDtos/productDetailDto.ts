@@ -1,0 +1,25 @@
+export interface ProductDetailDto{
+    id:number;
+    name:string;
+    posterImage:string;
+    salePrice:number;
+    discountedPrice:number;
+    discountPercent:number;
+    description:string;
+    gender:string;
+    brandName:string;
+    brandId:number;
+    style:string;
+    mechanism:string;
+    glassType:string;
+    waterResistance:string;
+    warrantyLimit:number;
+    productionCountry:string;
+    caseShape:string;
+    caseMaterial:string;
+    toolCount:string;
+    caseSize:string;
+    beltType:string;
+    beltColor:string;
+    dialColor:string;
+}

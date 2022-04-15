@@ -1,0 +1,23 @@
+export interface ProductAddDto{
+    name:string;
+    brandId:number;
+    genderId:number;
+    salePrice:number;
+    costPrice:number;
+    discountPercent:number;
+    description:string;
+    warrantyLimit:number;
+    productFunctionalityId:number;
+    productStyleId:number;
+    productWaterResistanceId:number;
+    countryId:number;
+    productMechanismId:number;
+    productGlassTypeId:number;
+    productCaseMaterialId:number;
+    productCaseShapeId:number;
+    productBeltTypeId:number;
+    productCaseSizeId:number;
+    productBeltColorId:number;
+    productDialColorId:number;
+    toolCount:number;
+}
