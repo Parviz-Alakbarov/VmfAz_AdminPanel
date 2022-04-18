@@ -31,26 +31,38 @@ export class AuthInterceptor implements HttpInterceptor {
     newRequest = request.clone({
       headers:request.headers.set("Authorization","Bearer "+token)
     });
+    console.log("1-------asdfasdf");
+    
     
     return next.handle(newRequest).pipe(catchError(( err:HttpErrorResponse )=>{
 
-      if (err.status ===401 && !this.refresh && !this.authService.isAuthenticated) {
+      if (err.status ===401 && !this.refresh) {
+
         this.refresh = true;
-        let refreshToken : RefreshTokenModel={ refreshToken :this.localStorageService.getItem('refreshToken')};
-        refreshToken.refreshToken = this.localStorageService.getItem('refreshToken');
+        let tempRefreshToken= this.localStorageService.getItem('refreshToken');
+        
+        let refreshToken : RefreshTokenModel={ refreshToken :tempRefreshToken};
+        // refreshToken.refreshToken = this.localStorageService.getItem('refreshToken');
 
         this.authService.refresh(refreshToken).subscribe(response=>{
 
           this.localStorageService.add("token",response.data.accessToken.token);
           this.localStorageService.add("refreshToken",response.data.refreshToken.token);
+          // token = this.localStorageService.getItem('token');
 
-          token = this.localStorageService.getItem('token');
-
+          let secNewRequest : HttpRequest<any> ;
           newRequest = request.clone({
-            headers:request.headers.set("Authorization","Bearer "+token)
+            headers:request.headers.set("Authorization","Bearer "+response.data.accessToken)
           });
+          // newRequest = request.clone({
+          //   headers:request.headers.set("Authorization","Bearer "+token)
+          // });
 
-          return next.handle(newRequest);
+          return next.handle(secNewRequest);
+
+          error=>{
+            console.log(error);
+          }
         })
       }
       this.refresh = false;

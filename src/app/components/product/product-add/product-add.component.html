@@ -218,32 +218,20 @@
                       </app-text-input> 
                     </div>
                   </div>
+
                   <div class="row">
-                    <div class="col-lg-4">
-                      <app-select-input
-                        [formControl]='productAdd.controls["productBeltColorId"]' 
-                        [label]='"Belt Color"' 
-                        [class]='"form-control"' 
-                        [optionsValue]=colors>
-                      </app-select-input>
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <input type="file" formControlName="posterImage" (change)="onFileSelected($event)">
+                        <p class="form_error" *ngIf="productAdd.get('address').hasError('required')" class="form_error">*ProducImage məcburidir!</p>
+                      </div>
                     </div>
-                    <div class="col-lg-4">
-                      <app-select-input
-                        [formControl]='productAdd.controls["productDialColorId"]' 
-                        [label]='"Dial Color"' 
-                        [class]='"form-control"' 
-                        [optionsValue]=colors>
-                      </app-select-input>
-                    </div>
-                    <div class="col-lg-4">
-                      <app-text-input 
-                        [formControl]='productAdd.controls["toolCount"]' 
-                        [label]='"Tool Count"' 
-                        [class]='"form-control"' 
-                        [type]='"number"'>
-                      </app-text-input> 
+                    <div class="col-lg-6">
+                      <div id="selectedBanner"></div>
                     </div>
                   </div>
+
+
                 </div>
                 <div class="pl-lg-4">
                   <div class="form-group">

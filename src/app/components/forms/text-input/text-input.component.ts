@@ -12,6 +12,7 @@ export class TextInputComponent implements ControlValueAccessor {
   @Input() class: string;
   @Input() autoComplete: string;
   @Input() type = 'text';
+  @Input() value = 'asd';
  
   constructor(@Self() public ngControl: NgControl) { 
     this.ngControl.valueAccessor = this;

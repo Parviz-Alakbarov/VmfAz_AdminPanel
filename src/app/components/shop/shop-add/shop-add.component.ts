@@ -54,9 +54,17 @@ export class ShopAddComponent implements OnInit {
       this.spinner.show();
       let shopModel  =  Object.assign({}, this.shopAdd.value)
       this.shopService.addShop(shopModel).subscribe(response=>{
+        console.log(response);
+        
         this.spinner.hide();
+        console.log(")$)$)$)$)$)$)$))$))$)$)$)$)$)$)$)$)");
+        
         this.toastrService.success(response.message, 'Success')
         this.router.navigateByUrl('/shops')
+        error=>{
+          console.log(error);
+        }
+        
       });
     }else{
       this.toastrService.error("Form is not Valid!", 'Fail', { timeOut: 1000 })

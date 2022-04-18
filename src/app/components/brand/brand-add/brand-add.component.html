@@ -30,6 +30,20 @@
   
                       </div>
                     </div>
+
+                    <div class="row">
+                      <div class="col-lg-6">
+  
+                        <input type="file" formControlName="image" (change)="onImageSelected($event)">
+                        <p class="form_error" *ngIf="brandAdd.get('image').hasError('required')" class="form_error">*BrandImage məcburidir!</p>
+                      </div>
+                      <div class="col-lg-6">
+  
+                        <input type="file" formControlName="posterImage" (change)="onPosterImageSelected($event)">
+                        <p class="form_error" *ngIf="brandAdd.get('posterImage').hasError('required')" class="form_error">*BrandPosterImage məcburidir!</p>
+  
+                      </div>
+                    </div>
                   </div>
                   <div class="pl-lg-4">
                     <div class="form-group">

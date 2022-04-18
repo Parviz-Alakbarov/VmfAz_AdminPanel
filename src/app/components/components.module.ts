@@ -26,6 +26,11 @@ import { NgxSpinnerModule } from "ngx-spinner";
 import { ToastrModule, ToastrService } from "ngx-toastr";
 import { SlidersListComponent } from './slider/sliders-list/sliders-list.component';
 import { SliderAddComponent } from './slider/slider-add/slider-add.component';
+import { HTTP_INTERCEPTORS } from "@angular/common/http";
+import { AuthInterceptor } from "../interceptors/auth.interceptor";
+import { ErrorInterceptor } from "../interceptors/error.interceptor";
+import { ProductEditComponent } from './product/product-edit/product-edit.component';
+import { ShopEditComponent } from './shop/shop-edit/shop-edit.component';
 @NgModule({
   imports: [
   CommonModule,
@@ -55,11 +60,17 @@ import { SliderAddComponent } from './slider/slider-add/slider-add.component';
     ShopAddComponent,
     SlidersListComponent,
     SliderAddComponent,
+    ProductEditComponent,
+    ShopEditComponent,
   ],
   exports: [
     FooterComponent,
     NavbarComponent,
     SidebarComponent
+  ],
+  providers: [
+    { provide:HTTP_INTERCEPTORS, useClass : AuthInterceptor,  multi:true },
+    { provide:HTTP_INTERCEPTORS, useClass : ErrorInterceptor, multi:true },
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })

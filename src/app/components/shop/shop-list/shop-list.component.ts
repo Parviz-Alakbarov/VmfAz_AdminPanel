@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ShopService } from './../../../app-services/shop.service';
 import { Shop } from './../../../models/entities/shop';
 import { ToastrService } from 'ngx-toastr';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-shop-list',
@@ -15,6 +16,7 @@ export class ShopListComponent implements OnInit {
   constructor(
     private shopService:ShopService,
     private toastrService:ToastrService,
+    private spinner : NgxSpinnerService
 
   ) { }
 
@@ -23,9 +25,14 @@ export class ShopListComponent implements OnInit {
   }
 
   getShops(){
+    this.spinner.show();
     this.shopService.getShops().subscribe(response=>{
       this.shops = response.data;
+      this.spinner.hide();
       //spinner
+    },errorResponse=>{
+      console.log(errorResponse);
+      
     })
   }
 

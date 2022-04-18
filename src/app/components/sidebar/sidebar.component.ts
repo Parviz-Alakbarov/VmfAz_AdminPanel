@@ -53,9 +53,10 @@ export class SidebarComponent implements OnInit {
      this.localStorageService.remove('refreshToken')
       this.toastrService.success("Hesabdan çıxış olundu.","Success")
       this.router.navigateByUrl("/")
-    },errorResponse=>{
-      console.log(errorResponse);
-      this.toastrService.error("Hesabdan çıxış olunarkən xəta baş verdi","Error");
+      error=>{
+        console.log(error);
+        this.toastrService.error("Hesabdan çıxış olunarkən xəta baş verdi","Error");
+      }
     })
   }
 }

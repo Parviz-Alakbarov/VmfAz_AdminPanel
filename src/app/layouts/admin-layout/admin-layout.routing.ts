@@ -14,6 +14,8 @@ import { ShopAddComponent } from 'src/app/components/shop/shop-add/shop-add.comp
 import { SlidersListComponent } from 'src/app/components/slider/sliders-list/sliders-list.component';
 import { SliderAddComponent } from 'src/app/components/slider/slider-add/slider-add.component';
 import { LoginGuard } from 'src/app/guards/login.guard';
+import { ProductEditComponent } from 'src/app/components/product/product-edit/product-edit.component';
+import { ShopEditComponent } from 'src/app/components/shop/shop-edit/shop-edit.component';
 
 export const AdminLayoutRoutes: Routes = [
     { path: 'dashboard',      component: DashboardComponent,      canActivate: [LoginGuard] },
@@ -28,4 +30,7 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'shops/add',      component: ShopAddComponent,        canActivate: [LoginGuard] },
     { path: 'sliders',        component: SlidersListComponent,    canActivate: [LoginGuard] },
     { path: 'sliders/add',    component: SliderAddComponent,      canActivate: [LoginGuard] },
+    
+    { path: 'products/edit/:productId' , component: ProductEditComponent,       canActivate: [LoginGuard] },
+    { path: 'shops/edit/:shopId' ,       component: ShopEditComponent,          canActivate: [LoginGuard] },
 ];

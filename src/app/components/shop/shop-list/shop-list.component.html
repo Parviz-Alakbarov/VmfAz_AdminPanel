@@ -34,7 +34,7 @@
                   {{shop.address}}
                 </td>
                 <td>
-                  {{shop.openHour}}:{{shop.openMinute}}--{{shop.closeHour}}:{{shop.closeMinute}}
+                  {{shop.openHour}}:{{shop.openMinute<10?'0'+shop.openMinute : shop.openMinute}} -- {{shop.closeHour}}:{{shop.closeMinute<10?'0'+shop.closeMinute : shop.openMinute}}
                 </td>
                 <td class="text-right">
                   <a routerLink="edit/{{shop.id}}" class="btn btn-sm btn-warning">Edit</a>

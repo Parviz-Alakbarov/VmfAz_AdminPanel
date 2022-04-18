@@ -42,7 +42,8 @@ import { ErrorInterceptor } from './interceptors/error.interceptor';
     AuthLayoutComponent
   ],
   providers: [
-  
+    { provide:HTTP_INTERCEPTORS, useClass : AuthInterceptor,  multi:true },
+    { provide:HTTP_INTERCEPTORS, useClass : ErrorInterceptor, multi:true },
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   

@@ -1,13 +1,10 @@
-export interface ProductAddDto{
-    name:string;
+export interface Product{
+    id:number;
     brandId:number;
     genderId:number;
-    salePrice:number;
-    costPrice:number;
-    discountPercent:number;
-    description:string;
-    warrantyLimit:number;
     productFunctionalityId:number;
+    toolCount:number;
+    warrantyLimit:number;
     productStyleId:number;
     productWaterResistanceId:number;
     countryId:number;
@@ -15,10 +12,15 @@ export interface ProductAddDto{
     productGlassTypeId:number;
     productCaseMaterialId:number;
     productCaseShapeId:number;
-    productBeltTypeId:number;
     productCaseSizeId:number;
+    productBeltTypeId:number;
     productBeltColorId:number;
     productDialColorId:number;
-    toolCount:number;
-    posterImage:File;
+    name:string;
+    salePrice:number;
+    costPrice:number;
+    discountPercent:number;
+    description:string;
+    posterImage:string;
+    
 }

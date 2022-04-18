@@ -23,6 +23,8 @@ export class ProductAddComponent implements OnInit {
   productAdd:FormGroup;
   validationErrors:ValidationErrorResponseModel[]=[];
 
+  selectedFile:File = null;
+
   brands:BrandWithOnlyNameDto[];
   functionalities:ProductEntryDto[];
   waterResistances:ProductEntryDto[];
@@ -91,7 +93,7 @@ export class ProductAddComponent implements OnInit {
       productBeltColorId:[null,[Validators.pattern("^[0-9]*$"),Validators.min(1)]],
       productDialColorId:[null,[Validators.pattern("^[0-9]*$"),Validators.min(1)]],
       toolCount:[null,[Validators.pattern("^[0-9]*$"),Validators.min(1)]],
-
+      posterImage:[this.selectedFile,[Validators.required]]
     })
   }
 
@@ -100,6 +102,11 @@ export class ProductAddComponent implements OnInit {
     if (this.productAdd.valid) {
       this.spinner.show();
       let productModel  =  Object.assign({}, this.productAdd.value)
+
+      productModel.posterImage = this.selectedFile;
+
+      console.log(productModel);
+      
       this.productService.addProduct(productModel).subscribe(data=>{
         this.spinner.hide();
         this.toastrService.success('Product Added', 'Success')
@@ -114,6 +121,12 @@ export class ProductAddComponent implements OnInit {
         }
       }
       el.scrollIntoView({behavior: 'smooth'})
+    }
+  }
+
+  onFileSelected(event){
+    if (event.target.files.length > 0) {
+      this.selectedFile = event.target.files[0];
     }
   }
 
@@ -149,7 +162,7 @@ export class ProductAddComponent implements OnInit {
   }
 
   getProductGlassTypes(){
-    this.settingService.getProductsFunctionalities().subscribe(response=>{
+    this.settingService.getProductGlassTypes().subscribe(response=>{
       this.glassTypes = response.data;
     })
   }

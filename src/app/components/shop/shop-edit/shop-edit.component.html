@@ -13,14 +13,14 @@
                 </div>
               </div>
               <div class="card-body">
-                <form [formGroup]="shopAdd"
-                (ngSubmit)="addShop(target)"
+                <form [formGroup]="shopEditForm"
+                (ngSubmit)="edit(target)"
                 method="post">
                   <div class="pl-lg-4">
                     <div class="row">
                       <div class="col-lg-6">
                         <app-text-input 
-                          [formControl]='shopAdd.controls["name"]' 
+                          [formControl]='shopEditForm.controls["name"]' 
                           [label]='"Shop Name"' 
                           [class]='"form-control"' 
                           [type]='"text"'>
@@ -28,7 +28,7 @@
                       </div>
                       <div class="col-lg-6">
                         <app-text-input 
-                          [formControl]='shopAdd.controls["email"]' 
+                          [formControl]='shopEditForm.controls["email"]' 
                           [label]='"Shop Email"' 
                           [class]='"form-control"' 
                           [type]='"text"'>
@@ -38,7 +38,7 @@
                     <div class="row">
                         <div class="col-lg-6">
                           <app-text-input 
-                            [formControl]='shopAdd.controls["phoneNumber1"]' 
+                            [formControl]='shopEditForm.controls["phoneNumber1"]' 
                             [label]='"Shop Phone Number 1"' 
                             [class]='"form-control"' 
                             [type]='"text"'>
@@ -46,7 +46,7 @@
                         </div>
                         <div class="col-lg-6">
                           <app-text-input 
-                            [formControl]='shopAdd.controls["phoneNumber2"]' 
+                            [formControl]='shopEditForm.controls["phoneNumber2"]' 
                             [label]='"Shop Phone Number 2"' 
                             [class]='"form-control"' 
                             [type]='"text"'>
@@ -57,7 +57,7 @@
                       <div class="row">
                         <div class="col-lg-6">
                           <app-text-input 
-                            [formControl]='shopAdd.controls["longitude"]' 
+                            [formControl]='shopEditForm.controls["longitude"]' 
                             [label]='"Longitude"' 
                             [class]='"form-control"' 
                             [type]='"text"'>
@@ -65,7 +65,7 @@
                         </div>
                         <div class="col-lg-6">
                           <app-text-input 
-                            [formControl]='shopAdd.controls["latitude"]' 
+                            [formControl]='shopEditForm.controls["latitude"]' 
                             [label]='"Latitude"' 
                             [class]='"form-control"' 
                             [type]='"text"'>
@@ -80,7 +80,7 @@
                         </div>
                         <div class="col-lg-2">
                           <app-text-input 
-                            [formControl]='shopAdd.controls["openHour"]' 
+                            [formControl]='shopEditForm.controls["openHour"]' 
                             [label]='"Hour"' 
                             [class]='"form-control"' 
                             [type]='"number"'>
@@ -88,7 +88,7 @@
                         </div>
                         <div class="col-lg-2">
                           <app-text-input 
-                            [formControl]='shopAdd.controls["openMinute"]' 
+                            [formControl]='shopEditForm.controls["openMinute"]' 
                             [label]='"Minute"' 
                             [class]='"form-control"' 
                             [type]='"number"'>
@@ -99,7 +99,7 @@
                         </div>
                         <div class="col-lg-2">
                           <app-text-input 
-                            [formControl]='shopAdd.controls["closeHour"]' 
+                            [formControl]='shopEditForm.controls["closeHour"]' 
                             [label]='"Hour"' 
                             [class]='"form-control"' 
                             [type]='"number"'>
@@ -107,7 +107,7 @@
                         </div>
                         <div class="col-lg-2">
                           <app-text-input 
-                            [formControl]='shopAdd.controls["closeMinute"]' 
+                            [formControl]='shopEditForm.controls["closeMinute"]' 
                             [label]='"Minute"' 
                             [class]='"form-control"' 
                             [type]='"number"'>
@@ -117,7 +117,7 @@
                       <div class="row">
                         <div class="col-lg-12">
                           <app-text-input 
-                            [formControl]='shopAdd.controls["redirectUrl"]' 
+                            [formControl]='shopEditForm.controls["redirectUrl"]' 
                             [label]='"Redirect Url"' 
                             [class]='"form-control"' 
                             [type]='"text"'>
@@ -128,7 +128,7 @@
                   <div class="pl-lg-4">
                     <div class="form-group">
                       <app-textarea-input
-                        [formControl]='shopAdd.controls["address"]' 
+                        [formControl]='shopEditForm.controls["address"]' 
                         [label]='"Shop Address"' 
                         [placeholder]='"Shop Adreess is important"'
                         [class]='"form-control"' 
@@ -138,7 +138,7 @@
                   </div>
                   <div class="pl-lg-4">
                     <div class="text-center">
-                      <button (click)="addShop(target)" type="button" class="btn btn-primary my-2 py-3 w-100">Create Shop</button>
+                      <button (click)="edit(target)" type="button" class="btn btn-primary my-2 py-3 w-100">Create Shop</button>
                     </div>
                   </div>
                 </form>

@@ -15,7 +15,8 @@ export class BrandAddComponent implements OnInit {
 
   brandAdd:FormGroup;
   validationErrors:ValidationErrorResponseModel[]=[];
-
+  ImageFile:File = null;
+  PosterImageFile:File = null;
 
   constructor(
     private formBuilder:FormBuilder,
@@ -61,4 +62,24 @@ export class BrandAddComponent implements OnInit {
     }
   }
 
+
+
+
+
+  onImageSelected(event){
+    if (event.target.files.length > 0) {
+      this.ImageFile = event.target.files[0];
+    }
+  }
+
+  onPosterImageSelected(event){
+    if (event.target.files.length > 0) {
+      this.PosterImageFile = event.target.files[0];
+    }
+  }
+
+
 }
+
+
+
