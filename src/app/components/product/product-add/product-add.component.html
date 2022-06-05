@@ -16,11 +16,13 @@
               <form 
                   [formGroup]="productAdd"
                   (ngSubmit)="addProduct(target)"
-                  method="post">
+                  method="post"
+                  #ngForm="ngForm"
+                  enctype="multipart/form-data">
                 <div class="pl-lg-4">
                   <div class="row">
                     <div class="col-lg-12">
-                      <ul *ngIf="validationErrors.length != 0" class="form_error-list">
+                      <ul *ngIf="validationErrors.length > 0" class="form_error-list">
                         <li *ngFor="let error of validationErrors" class="form_error_item">*{{error.ErrorMessage}}</li>
                       </ul>
                     </div>
@@ -44,7 +46,6 @@
                         [class]='"form-control"' 
                         [optionsValue]=brands>
                       </app-select-input>
-
                     </div>
                     <div class="col-lg-3">
 
@@ -222,12 +223,21 @@
                   <div class="row">
                     <div class="col-lg-6">
                       <div class="form-group">
-                        <input type="file" formControlName="posterImage" (change)="onFileSelected($event)">
-                        <p class="form_error" *ngIf="productAdd.get('address').hasError('required')" class="form_error">*ProducImage məcburidir!</p>
+                        <input  
+                            [class.form_is-invalid]='productAdd.get("posterImage").errors && productAdd.get("posterImage").touched' 
+                            type="file" 
+                            class="form-control" 
+                            formControlName="posterImage" 
+                            (change)="onFileSelected($event)"
+                            accept="image/*"
+                        >
+                        <p class="form_error" *ngIf="productAdd.get('posterImage').hasError('required')">*ProducImage məcburidir!</p>
                       </div>
                     </div>
                     <div class="col-lg-6">
-                      <div id="selectedBanner"></div>
+                      <div id="selectedBanner">
+                        <img id="output" width="200" />
+                      </div>
                     </div>
                   </div>
 

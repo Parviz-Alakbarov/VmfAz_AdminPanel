@@ -25,6 +25,7 @@ export class ProductEditComponent implements OnInit {
   productEditForm:FormGroup;
   product:Product;
   selectedFile:File = null;
+  dataLoaded:boolean = false;
 
   validationErrors:ValidationErrorResponseModel[]=[];
 
@@ -45,30 +46,59 @@ export class ProductEditComponent implements OnInit {
       this.getProduct(params["productId"]);
     });
 
-    this.createProductUpdateForm();
   }
 
-  edit(el : HTMLElement){
+  edit(){
+    if (this.productEditForm.controls.posterImage.value) {
+
+      
+      
+      
+    }
     if (this.productEditForm.valid) {
       this.spinner.show();
-      let productModel  =  Object.assign({}, this.productEditForm.value)
 
-      this.productService.updateProduct(this.product.id,productModel).subscribe(data=>{
-        this.spinner.hide();
-        this.toastrService.success('Product Added', 'Success')
-        this.router.navigateByUrl('/products')
-      });
-    }else{
-      this.toastrService.error("Form is not Valid!", 'Fail', { timeOut: 1000 })
-      for (const key in this.productEditForm.controls) {
-        if (this.productEditForm.controls.hasOwnProperty(key)) {
-          const control: FormControl = <FormControl>this.productEditForm.controls[key];
-          control.markAsTouched();
+      const formData: FormData = new FormData();
+      formData.append('posterImage', this.selectedFile, this.selectedFile.name);
+      for (const key in this.productEditForm.value) {
+        if (this.productEditForm.value.hasOwnProperty(key)) {
+          const element = this.productEditForm.value[key];
+          formData.append(key, element);
         }
       }
-      el.scrollIntoView({behavior: 'smooth'})
+       
+      console.log(formData);
+    }else{
+
     }
   }
+
+
+
+
+
+
+  // edit(el : HTMLElement){
+  //   if (this.productEditForm.valid) {
+  //     this.spinner.show();
+  //     let productModel  =  Object.assign({}, this.productEditForm.value)
+
+  //     this.productService.updateProduct(this.product.id,productModel).subscribe(data=>{
+  //       this.spinner.hide();
+  //       this.toastrService.success('Product Added', 'Success')
+  //       this.router.navigateByUrl('/products')
+  //     });
+  //   }else{
+  //     this.toastrService.error("Form is not Valid!", 'Fail', { timeOut: 1000 })
+  //     for (const key in this.productEditForm.controls) {
+  //       if (this.productEditForm.controls.hasOwnProperty(key)) {
+  //         const control: FormControl = <FormControl>this.productEditForm.controls[key];
+  //         control.markAsTouched();
+  //       }
+  //     }
+  //     el.scrollIntoView({behavior: 'smooth'})
+  //   }
+  // }
 
   getProduct(id:number){
     this.spinner.show();
@@ -100,8 +130,9 @@ export class ProductEditComponent implements OnInit {
       costPrice:[this.product.costPrice,[Validators.required,Validators.pattern("^[0-9]*$"), Validators.min(0)]],
       discountPercent:[this.product.discountPercent,[Validators.required,Validators.pattern("^[0-9]*$"), Validators.min(0),Validators.max(100)]],
       description:[this.product.description,[Validators.required,Validators.maxLength(1000)]],
-      posterImage:[this.product.posterImage,[Validators.required]]
+      posterImage:["",[Validators.required]]
     });
+    this.dataLoaded=true;
   }
 
 }

@@ -10,6 +10,7 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
 import { ToastrModule } from 'ngx-toastr';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 
 import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
@@ -33,7 +34,8 @@ import { ErrorInterceptor } from './interceptors/error.interceptor';
     ToastrModule.forRoot({
       timeOut: 1000,
       positionClass: 'toast-bottom-right',
-    })
+    }),
+    SweetAlert2Module.forRoot()
 
   ],
   declarations: [

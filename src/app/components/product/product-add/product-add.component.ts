@@ -80,37 +80,46 @@ export class ProductAddComponent implements OnInit {
       warrantyLimit:["",[Validators.required,Validators.min(0)]],
       //
       productFunctionalityId:["",[Validators.required,Validators.pattern("^[0-9]*$"),Validators.min(1)]],
-      productStyleId:[null,[Validators.pattern("^[0-9]*$"),Validators.min(1)]],
-      productWaterResistanceId:[null,[Validators.pattern("^[0-9]*$"),Validators.min(1)]],
-      countryId:[null,[Validators.pattern("^[0-9]*$"),Validators.min(1)]],
-      productMechanismId:[null,[Validators.pattern("^[0-9]*$"),Validators.min(1)]],
-      productGlassTypeId:[null,[Validators.pattern("^[0-9]*$"),Validators.min(1)]],
+      productStyleId:["",[Validators.pattern("^[0-9]*$"),Validators.min(1)]],
+      productWaterResistanceId:["",[Validators.pattern("^[0-9]*$"),Validators.min(1)]],
+      countryId:["",[Validators.pattern("^[0-9]*$"),Validators.min(1)]],
+      productMechanismId:["",[Validators.pattern("^[0-9]*$"),Validators.min(1)]],
+      productGlassTypeId:["",[Validators.pattern("^[0-9]*$"),Validators.min(1)]],
       /////////////////////
-      productCaseMaterialId:[null,[Validators.pattern("^[0-9]*$"),Validators.min(1)]],
-      productCaseShapeId:[null,[Validators.pattern("^[0-9]*$"),Validators.min(1)]],
-      productBeltTypeId:[null,[Validators.pattern("^[0-9]*$"),Validators.min(1)]],
-      productCaseSizeId:[null,[Validators.pattern("^[0-9]*$"),Validators.min(1)]],
-      productBeltColorId:[null,[Validators.pattern("^[0-9]*$"),Validators.min(1)]],
-      productDialColorId:[null,[Validators.pattern("^[0-9]*$"),Validators.min(1)]],
-      toolCount:[null,[Validators.pattern("^[0-9]*$"),Validators.min(1)]],
+      productCaseMaterialId:["",[Validators.pattern("^[0-9]*$"),Validators.min(1)]],
+      productCaseShapeId:["",[Validators.pattern("^[0-9]*$"),Validators.min(1)]],
+      productBeltTypeId:["",[Validators.pattern("^[0-9]*$"),Validators.min(1)]],
+      productCaseSizeId:["",[Validators.pattern("^[0-9]*$"),Validators.min(1)]],
+      productBeltColorId:["",[Validators.pattern("^[0-9]*$"),Validators.min(1)]],
+      productDialColorId:["",[Validators.pattern("^[0-9]*$"),Validators.min(1)]],
+      toolCount:["",[Validators.pattern("^[0-9]*$"),Validators.min(1)]],
       posterImage:[this.selectedFile,[Validators.required]]
     })
   }
 
   addProduct(el : HTMLElement){
-    
     if (this.productAdd.valid) {
       this.spinner.show();
-      let productModel  =  Object.assign({}, this.productAdd.value)
-
-      productModel.posterImage = this.selectedFile;
-
-      console.log(productModel);
       
-      this.productService.addProduct(productModel).subscribe(data=>{
+      const formData: FormData = new FormData();
+      formData.append('posterImage', this.selectedFile, this.selectedFile.name);
+      for (const key in this.productAdd.value) {
+        if (this.productAdd.value.hasOwnProperty(key)) {
+          const element = this.productAdd.value[key];
+          formData.append(key, element);
+        }
+      }
+      
+      this.productService.addProduct(formData).subscribe(data=>{
         this.spinner.hide();
         this.toastrService.success('Product Added', 'Success')
         this.router.navigateByUrl('/products')
+        
+      },error=>{
+        this.validationErrors = error;
+        console.log(error);
+        this.spinner.hide();
+        window.scroll(0,0);
       });
     }else{
       this.toastrService.error("Form is not Valid!", 'Fail', { timeOut: 1000 })
@@ -127,9 +136,9 @@ export class ProductAddComponent implements OnInit {
   onFileSelected(event){
     if (event.target.files.length > 0) {
       this.selectedFile = event.target.files[0];
+      (<HTMLImageElement>document.getElementById('output')).src=URL.createObjectURL(event.target.files[0])
     }
   }
-
 
   getBrands(){
     this.brandService.getBrandsWithName().subscribe(response=>{

@@ -4,8 +4,12 @@
 
 
 .page-item {
+    cursor: pointer;
     &.active .page-link {
         box-shadow: $pagination-active-box-shadow;
+    }
+    &.disabled{
+        cursor: not-allowed;
     }
 
     .page-link,
